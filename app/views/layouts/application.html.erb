@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>S3Demo</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="/assets/html5shiv.js"></script><![endif]-->
+  <link rel="stylesheet" href="/assets/main.css" />
+  <!--[if lte IE 9]><link rel="stylesheet" href="/assets/ie9.css" /><![endif]-->
+  <!--[if lte IE 8]><link rel="stylesheet" href="/assets/ie8.css" /><![endif]-->
+  <noscript><link rel="stylesheet" href="/assets/noscript.css" /></noscript>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="is-loading">
+  <!-- Wrapper -->
+  <div id="wrapper">
+    <!-- Main -->
+    <section id="main">
+      <%= yield %>
+      <%= render "shared/footer" %>
+    </section>
+
+    <%= render "shared/bottom" %>
+
+    <!--[if lte IE 8]><script src="assets/js/respond.min.js"></script><![endif]-->
+    <script>
+      if ('addEventListener' in window) {
+        window.addEventListener('load', function() { 
+          document.body.className = document.body.className.replace(/\bis-loading\b/, ''); 
+        });
+        document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+      }
+    </script>
+</body>
+</html>

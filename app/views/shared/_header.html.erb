@@ -1,0 +1,23 @@
+<header>
+  <span class="avatar">
+    <div class="image">
+      <img id="avatar" src="http:<%= @user.avatar.url(:thumb) %>" title="Change Image" style="width:122px;height:122px;cursor:pointer;" />
+    </div>
+  </span>
+  <h1><%= @user.full_name %></h1>
+  <p><%= @user.designation %></p>
+  <%= form_for @user, url: "/", method: :post do |f| %>
+    <%= f.file_field :avatar, style: "visibility:hidden" %>
+  <% end %>
+</header>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("img#avatar").click(function(){
+      $("input#user_avatar").click();
+    });
+    $("input#user_avatar").change(function(){
+      $("form.edit_user").submit();
+    });
+  });
+</script>
